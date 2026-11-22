@@ -196,6 +196,7 @@ h3{text-wrap:balance}
 .plan p.note{flex:none;margin-top:16px}
 .plan p.note:empty{margin:0}
 .timer{font:800 15px var(--disp);margin-top:10px}
+.plan.hot .timer:not(:empty){justify-self:start;width:max-content;background:#000;color:var(--y1);border-radius:999px;padding:8px 16px;font-size:17px;font-variant-numeric:tabular-nums;letter-spacing:.01em}
 .fine{color:var(--mute);font-size:15px;margin-top:22px;max-width:70ch}
 @media(max-width:860px){.plans{grid-template-columns:minmax(0,1fr);row-gap:14px}.plan{grid-row:auto;grid-template-rows:none}.badge-slot,.timer-slot{display:none}}
 
@@ -433,7 +434,7 @@ const T = {
     ch_min:"тільки м щодня", ch_day:"день",
     pr_h:"Ціна.",
     o_badge:"🎁 Бонус для друзів", o_h:"Перший місяць · старт", o_per:"за перший місяць", o_note:"⏳ Лише 47 годин після запуску. Чому 47? Бо 4 і 7 мої улюблені цифри 🤫",
-    o_wait:"47 годин після запуску", o_left:(h,m,s)=>`залишилось ${h}:${m}:${s}`,
+    o_wait:"47 годин після запуску", o_left:(h,m,s)=>`⏳ ${h}:${m}:${s}`,
     m_h:"Місяць", m_per:"на місяць", m_note:"",
     h_h:"6 місяців", h_per:"≈ 413 грн на місяць", h_note:"",
     uah:"грн",
@@ -490,7 +491,7 @@ const T = {
     ch_min:"only m every day", ch_day:"day",
     pr_h:"Price.",
     o_badge:"🎁 Bonus for friends", o_h:"First month · launch", o_per:"for the first month", o_note:"⏳ Only for 47 hours after launch. Why 47? Because 4 and 7 are my favourite numbers 🤫",
-    o_wait:"47 hours after launch", o_left:(h,m,s)=>`${h}:${m}:${s} left`,
+    o_wait:"47 hours after launch", o_left:(h,m,s)=>`⏳ ${h}:${m}:${s}`,
     m_h:"Month", m_per:"a month", m_note:"",
     h_h:"6 months", h_per:"≈ 413 UAH a month", h_note:"",
     uah:"UAH",
