@@ -62,7 +62,7 @@ p,li{text-wrap:pretty}
 :focus-visible{outline:2px solid var(--acc);outline-offset:3px}
 
 /* верхня смуга */
-.top{position:sticky;top:0;z-index:5;background:rgba(246,242,234,.92);border-bottom:1px solid var(--line)}
+.top{position:sticky;top:0;z-index:5;background:#F6F2EA;border-bottom:1px solid #DDD5C7}
 .top .wrap{display:flex;align-items:center;gap:16px;height:64px}
 .logo{font:600 21px var(--mono);letter-spacing:-.04em;text-decoration:none;color:var(--ink)}
 .top nav{display:flex;gap:24px;margin-left:auto;font-size:15px}
@@ -93,7 +93,15 @@ p,li{text-wrap:pretty}
 .bub{background:#182533;color:#e8edf2;border-radius:16px 16px 16px 4px;padding:10px 12px 8px;font-size:14px;line-height:1.45;max-width:94%}
 .bub .pic{height:118px;border-radius:10px;margin-bottom:8px;display:grid;grid-template-columns:repeat(6,1fr);gap:2px;overflow:hidden}
 .bub .pic span{background:#22303f;transition:background .5s}
-.bub .pic span.on{background:var(--c,#f7c948)}
+.bub .pic span.on{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20600%20500%27%20preserveAspectRatio%3D%27none%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27s%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%270%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27%23f3c98b%27%2F%3E%3Cstop%20offset%3D%27.55%27%20stop-color%3D%27%23e8915f%27%2F%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%23b4532a%27%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%27600%27%20height%3D%27500%27%20fill%3D%27url%28%23s%29%27%2F%3E%3Ccircle%20cx%3D%27390%27%20cy%3D%27250%27%20r%3D%2770%27%20fill%3D%27%23fbe3b0%27%2F%3E%3Cpath%20d%3D%27M0%20330%20L120%20220%20L210%20300%20L320%20180%20L430%20290%20L520%20230%20L600%20280%20L600%20500%20L0%20500Z%27%20fill%3D%27%237a3b22%27%2F%3E%3Cpath%20d%3D%27M0%20400%20L150%20320%20L260%20380%20L380%20300%20L500%20370%20L600%20330%20L600%20500%20L0%20500Z%27%20fill%3D%27%234a2618%27%2F%3E%3Cpath%20d%3D%27M320%20180%20L345%20205%20L320%20200%20L298%20210Z%27%20fill%3D%27%23f6f2ea%27%2F%3E%3Cpath%20d%3D%27M120%20220%20L140%20238%20L118%20236%20L104%20240Z%27%20fill%3D%27%23f6f2ea%27%2F%3E%3Cpath%20d%3D%27M320%20180%20L320%20140%20L345%20150%20L320%20158%27%20fill%3D%27none%27%20stroke%3D%27%231c1a17%27%20stroke-width%3D%274%27%2F%3E%3C%2Fsvg%3E");background-size:600% 500%}
+.hero-lede{font-size:clamp(18px,1.6vw,20px);color:var(--mute);max-width:46ch;margin-top:26px}
+.phone-col{justify-self:center;width:min(330px,100%);display:flex;flex-direction:column;gap:14px}
+.phone-col .phone{width:100%}
+.spheres{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:14px}
+.spheres button{all:unset;cursor:pointer;color:var(--mute);padding:2px 0;border-bottom:1px solid transparent;transition:color .15s,border-color .15s}
+.spheres button:hover{color:var(--ink)}
+.spheres button[aria-pressed=true]{color:var(--ink);border-bottom-color:var(--acc)}
+.spheres button:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
 .bub .ok{color:#8fe08f;display:none}.bub.marked .ok{display:block}
 .tkb{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
 .tkb span{background:#2b5278;border-radius:8px;text-align:center;padding:8px 0;font-size:13px;color:#fff;transition:background .15s}
@@ -163,12 +171,12 @@ p,li{text-wrap:pretty}
 .cell:hover{opacity:.85}
 .cell[data-l=m]{background:var(--m);font-size:clamp(10px,1.1vw,12px)}.cell[data-l=n]{background:var(--n)}.cell[data-l=x]{background:var(--x);color:#fff;font-size:clamp(13px,1.6vw,16px)}
 .cell[data-l=f]{background:#16303f;color:var(--f)}.cell[data-l=s]{color:#8a857c}
-.legend2{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px;font-size:13px;color:#a8a299}
-.legend2 i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.legend2{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px;font-size:13px;color:#cfc9bd}
+.legend2 i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
 .board{position:relative;border-radius:8px;background:#14130f;border:1px solid #2c2925;padding:clamp(18px,2.6vw,28px);display:flex;flex-direction:column;min-height:420px}
 .board .num{font-size:clamp(52px,7.4vw,88px);line-height:.95;color:#f2f2ee}
 .board .num.grad{color:#e8915f}
-.board .sub{color:#a8a299;margin-top:8px;font-size:15px}
+.board .sub{color:#cfc9bd;margin-top:8px;font-size:15px}
 .board .fig{position:relative;flex:1;min-height:220px;margin-top:16px}
 .board svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 @media(max-width:860px){.play{grid-template-columns:minmax(0,1fr)}}
@@ -250,8 +258,11 @@ p,li{text-wrap:pretty}
     <div class="wrap hero-grid">
       <div>
         <h1 class="poster"><span class="grad" data-t="p1">+1% щодня</span><span class="o" data-t="p2">це ×37 за рік.</span></h1>
-        <div class="ctas"><a class="btn main" href="https://t.me/x37game" data-t="cta">Почати</a></div>
+        <p class="lede hero-lede" data-t="hero_sub"></p>
+        <div class="ctas"><a class="btn main" href="https://t.me/x37game" data-t="cta_try">Спробувати місяць за 100 грн</a></div>
       </div>
+      <div class="phone-col">
+      <div class="spheres" role="group" aria-label="Сфери" id="spheres"></div>
       <div class="phone" aria-hidden="true">
         <div class="screen">
           <div class="bub" id="demo">
@@ -261,6 +272,7 @@ p,li{text-wrap:pretty}
           </div>
           <div class="tkb" id="demo-kb"><span data-k="m"></span><span data-k="n"></span><span data-k="x"></span><span>📊</span><span class="w" data-t="k_f"></span><span class="w" data-t="k_s"></span></div>
         </div>
+      </div>
       </div>
     </div>
   </section>
@@ -391,6 +403,10 @@ const T = {
     nav_how:"Як це працює", nav_try:"Спробуй", nav_price:"Ціна",
     p1:"+1% щодня", p2:"це ×37 за рік.",
     lede:"Якщо тобі казали, що складна математика в житті не знадобиться, тобі брехали. m100M і формула Бернуллі складаються в прогрес, який не зупинити.",
+    hero_sub:"Спокійна система в Telegram і коло своїх людей, щоб дійти до твоїх справжніх цілей без вигорання. Одне натискання на день.",
+    cta_try:"Спробувати місяць за 100 грн",
+    sph:[["sport","Спорт","1 км","5 км"],["career","Кар'єра","10 хв над резюме","1 відгук на вакансію"],["money","Фінанси","записати витрати дня","відкласти 100 грн"],
+         ["love","Стосунки","одне тепле повідомлення","20 хв розмови без телефона"],["spirit","Духовність","3 хв тиші","15 хв медитації"],["study","Освіта","1 сторінка","20 хв уроку"]],
     cta:"Почати", k_f:"❄️ заморозка", k_s:"пропуск", k_m1:"m", k_x1:"M", pc_m:"+0,5%", f_n:"1,01³⁶⁵ ≈ 37,78",
     tick:"постійність створює події, які інші називають удачею",
     demo:{day:(d)=>`День ${d} з 30`, lv:"m: 2 км · 100: 5 км", st:(n)=>`серія ${n} ${n%10===1&&n%100!==11?"день":(n%10>=2&&n%10<=4&&(n%100<12||n%100>14))?"дні":"днів"}`, mx:(x)=>`математика результату ${x}`, ok:(l)=>`✅ Відмічено: ${l}`, lab:{m:"🟨 m",n:"🟩 100",x:"🟦 M"}},
@@ -448,6 +464,10 @@ const T = {
     nav_how:"How it works", nav_try:"Try it", nav_price:"Price",
     p1:"+1% a day", p2:"is ×37 a year.",
     lede:"If they told you hard math would never be useful in life, they lied. m100M and Bernoulli's formula add up to progress that can't be stopped.",
+    hero_sub:"A calm system in Telegram and a circle of your people, to reach your real goals without burning out. One tap a day.",
+    cta_try:"Try a month for 100 UAH",
+    sph:[["sport","Sport","1 km","5 km"],["career","Career","10 min on your CV","1 job application"],["money","Money","log today's spending","save 100 UAH"],
+         ["love","Relationships","one warm message","20 min talk without phones"],["spirit","Spirit","3 min of silence","15 min meditation"],["study","Learning","1 page","20 min lesson"]],
     cta:"Start", k_f:"❄️ freeze", k_s:"skip", k_m1:"m", k_x1:"M", pc_m:"+0.5%", f_n:"1.01³⁶⁵ ≈ 37.78",
     tick:"consistency creates events that others call luck",
     demo:{day:(d)=>`Day ${d} of 30`, lv:"m: 2 km · 100: 5 km", st:(n)=>`streak ${n} day${n===1?"":"s"}`, mx:(x)=>`math of results ${x}`, ok:(l)=>`✅ Checked in: ${l}`, lab:{m:"🟨 m",n:"🟩 100",x:"🟦 M"}},
@@ -536,7 +556,7 @@ function drawMonth() {
   const x = (i) => (W - padR) * i / 30, y = (v) => H - padB - (H - padB - padT) * (v - 1) / (top - 1);
   const line = (arr) => arr.map((v, i) => (i ? "L" : "M") + x(i).toFixed(1) + " " + y(v).toFixed(1)).join("");
   const grid = [1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8].filter((v) => v < top).map((v) =>
-    `<line x1="0" x2="${W - padR}" y1="${y(v)}" y2="${y(v)}" stroke="#1f1f19"/><text x="${W - padR + 8}" y="${y(v) + 4}" fill="#55554c" font-size="11" font-family="Onest, system-ui, sans-serif">${fmt(v)}</text>`).join("");
+    `<line x1="0" x2="${W - padR}" y1="${y(v)}" y2="${y(v)}" stroke="#2c2a25"/><text x="${W - padR + 8}" y="${y(v) + 4}" fill="#9a958b" font-size="11" font-family="Onest, system-ui, sans-serif">${fmt(v)}</text>`).join("");
   const dots = days.map((l, i) => `<circle cx="${x(i + 1)}" cy="${y(pts[i + 1])}" r="${W > 520 ? 4 : 3}" fill="${COL[l]}"/>`).join("");
   s.innerHTML = `<defs><linearGradient id="mg" x1="0" x2="1"><stop offset="0" stop-color="#e8915f"/><stop offset="1" stop-color="#e8915f"/></linearGradient>
     <linearGradient id="ma" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#e8915f" stop-opacity=".3"/><stop offset="1" stop-color="#e8915f" stop-opacity="0"/></linearGradient></defs>
@@ -545,8 +565,8 @@ function drawMonth() {
     <path d="${line(pts)}" stroke="url(#mg)" stroke-width="3.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
     ${dots}
     <circle cx="${x(30)}" cy="${y(pts[30])}" r="8" fill="#e8915f"/>
-    <text x="0" y="${H - 6}" fill="#55554c" font-size="11" font-family="Onest, system-ui, sans-serif">${T[lang].ch_day} 1</text>
-    <text x="${x(30)}" y="${H - 6}" text-anchor="end" fill="#55554c" font-size="11" font-family="Onest, system-ui, sans-serif">30</text>`;
+    <text x="0" y="${H - 6}" fill="#9a958b" font-size="11" font-family="Onest, system-ui, sans-serif">${T[lang].ch_day} 1</text>
+    <text x="${x(30)}" y="${H - 6}" text-anchor="end" fill="#9a958b" font-size="11" font-family="Onest, system-ui, sans-serif">30</text>`;
 }
 const mro = new ResizeObserver(drawMonth); mro.observe($("mc"));
 $("g30").addEventListener("click", (e) => {
@@ -557,13 +577,15 @@ $("g30").addEventListener("click", (e) => {
 document.querySelectorAll("#tabs .tab").forEach((b) => b.addEventListener("click", () => { preset = b.dataset.preset; days = PRESETS[preset].split(""); renderMonth(); }));
 
 /* ---------- живий бот у телефоні ---------- */
-const demo = { day: 12, streak: 7, mult: 1.14, open: 11 };
+const demo = { day: 14, streak: 9, mult: 1.16, open: 13 };
+let sphere = "sport";
 const pic = $("demo-pic");
 pic.innerHTML = Array.from({ length: 30 }, () => "<span></span>").join("");
-function demoReset() { Object.assign(demo, { day: 12, streak: 7, mult: 1.14, open: 11 }); [...pic.children].forEach((c, i) => { c.classList.toggle("on", i < 11); c.style.setProperty("--c", ["#f7c948", "#3fb950", "#3b82f6"][i % 3]); }); }
+[...pic.children].forEach((c, i) => { c.style.backgroundPosition = `${(i % 6) * 20}% ${Math.floor(i / 6) * 25}%`; });
+function demoReset() { Object.assign(demo, { day: 14, streak: 9, mult: 1.16, open: 13 }); [...pic.children].forEach((c, i) => c.classList.toggle("on", i < 13)); }
 function demoPaint(marked) {
   const D = T[lang].demo;
-  $("d-day").textContent = D.day(demo.day); $("d-lv").textContent = D.lv; $("d-st").textContent = D.st(demo.streak);
+  $("d-day").textContent = D.day(demo.day); const sp = T[lang].sph.find((x) => x[0] === sphere) || T[lang].sph[0]; $("d-lv").textContent = `m: ${sp[2]} · 100: ${sp[3]}`; $("d-st").textContent = D.st(demo.streak);
   $("d-mx").textContent = D.mx(fmt(demo.mult)); $("d-ok").textContent = marked ? D.ok(D.lab[marked]) : "";
   $("demo").classList.toggle("marked", !!marked);
 }
@@ -573,7 +595,7 @@ function demoStep() {
   setTimeout(() => {
     btn.classList.remove("tap");
     demo.mult *= 1 + RATE[k]; demo.streak++;
-    const cell = pic.children[demo.open]; if (cell) { cell.style.setProperty("--c", COL[k]); cell.classList.add("on"); }
+    const cell = pic.children[demo.open]; if (cell) cell.classList.add("on");
     demo.open++; demoPaint(k);
     setTimeout(() => { demo.day++; if (demo.day > 30) demoReset(); demoPaint(); }, 1500);
   }, 260);
@@ -602,6 +624,7 @@ function setLang(l) {
   document.querySelectorAll(".lang button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.lang === l));
   document.querySelector(".poster").setAttribute("aria-label", L.p1 + " " + L.p2);
   document.querySelectorAll("#demo-kb [data-k]").forEach((k) => { k.textContent = L.demo.lab[k.dataset.k]; });
+  $("spheres").innerHTML = L.sph.map(([k, n]) => `<button type="button" data-s="${k}" aria-pressed="${k === sphere}">${esc(n)}</button>`).join("");
   $("me-txt").innerHTML = L.me.map((p, i) => Array.isArray(p)
     ? `<p>${esc(p[0])}</p><ol class="wins">${p.slice(1).map((x) => `<li>${esc(x)}</li>`).join("")}</ol>`
     : `<p${i === 2 ? ' class="key"' : ""}>${esc(p)}</p>`).join("");
@@ -615,6 +638,12 @@ function setLang(l) {
 document.querySelectorAll(".lang button").forEach((b) => b.addEventListener("click", () => setLang(b.dataset.lang)));
 
 demoReset();
+$("spheres").addEventListener("click", (e) => {
+  const b = e.target.closest("button[data-s]"); if (!b) return;
+  sphere = b.dataset.s;
+  $("spheres").querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b));
+  demoPaint();
+});
 setLang(lang);
 if (!reduce) setInterval(demoStep, 2600);
 }
