@@ -179,9 +179,25 @@ p,li{text-wrap:pretty}
 .c-items li{padding:18px 0;border-bottom:1px solid var(--line)}
 .c-items b{display:block;font:600 20px var(--disp);letter-spacing:-.02em}
 .c-items span{color:var(--mute);font-size:16px}
-.shots{columns:3 260px;column-gap:20px;margin-top:48px}
-.shots figure{margin:0 0 20px;break-inside:avoid;max-width:420px}
-.shots img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid #DDD5C7;background:#121820}
+.shots{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:20px;margin-top:48px;align-items:start}
+.shots figure{margin:0}
+.shots>figure{max-width:420px}
+.shots img{display:block;max-width:100%;height:auto;border-radius:12px;border:1px solid #DDD5C7;background:#0D1014}
+.shots>figure img{width:100%;background:#121820}
+.shots .stack{display:grid;gap:12px;justify-items:start}
+@media(max-width:860px){.shots{grid-template-columns:minmax(0,1fr)}}
+.shots .mchat{display:none}
+@media(max-width:860px){
+  .shots .stack picture.desk{display:none}
+  .shots .stack figure{width:100%}
+  .shots .mchat{display:flex;align-items:flex-end;gap:8px;background:#0D1014;border:1px solid #DDD5C7;border-radius:12px;padding:10px 10px 12px}
+  .shots .mchat.noava .av{display:none}
+  .shots .mchat .av{flex:none;width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#8a8f96,#4a4e55);filter:blur(1.5px)}
+  .shots .mchat>div{display:grid;gap:6px;min-width:0}
+  .shots .mchat p{position:relative;margin:0;justify-self:start;background:#22252B;color:#E9EAEC;font:400 15px/1.4 var(--body);padding:9px 12px 12px;border-radius:16px;overflow-wrap:anywhere}
+  .shots .mchat p i{position:absolute;left:4px;bottom:-9px;font-style:normal;font-size:11px;background:#22252B;border:2px solid #0D1014;border-radius:10px;padding:0 5px;line-height:16px}
+  .shots .mchat p:has(i){margin-bottom:8px}
+}
 .shots figcaption{margin-top:10px;color:var(--mute);font-size:14px;line-height:1.5}
 .shots figcaption:empty{display:none}
 @media(max-width:860px){.c-layout{grid-template-columns:minmax(0,1fr)}}
@@ -350,6 +366,7 @@ p,li{text-wrap:pretty}
            <figure><img src="img/chats/01.webp" alt="Переписка в чаті ×37" loading="lazy"></figure> -->
       <div class="shots" id="shots">
         <figure><picture><source srcset="img/reviews/masha.webp" type="image/webp"><img src="img/reviews/masha.png" alt="Відгук Маші Павлової в Telegram: робити хоча б трішки, але кожен день" width="640" height="755" loading="lazy" decoding="async"></picture><figcaption data-t="rev_masha"></figcaption></figure>
+        <div class="stack"><figure><div class="mchat" aria-hidden="true"><span class="av"></span><div><p>Смотрю постоянно<br>Не смотря на то, что моя жизнь очень скучная , как будто тоже хочу сделать такое<i>❤️</i></p></div></div><picture class="desk"><source srcset="img/reviews/rev-smotryu.webp" type="image/webp"><img src="img/reviews/rev-smotryu.png" alt="Відгук з переписки" width="637" height="101" loading="lazy" decoding="async"></picture><figcaption data-t="rev_smotryu"></figcaption></figure><figure><div class="mchat" aria-hidden="true"><span class="av"></span><div><p>Вчора дивилась наш з тобою батл на Адрегаліне… ти там зовсім інший… я прям про це подумала. Цікаво як тіло змінюється від різних навантажень та часу… підтримую твою активність! Мотивує<i>❤️</i></p></div></div><picture class="desk"><source srcset="img/reviews/rev-adrenalin.webp" type="image/webp"><img src="img/reviews/rev-adrenalin.png" alt="Відгук з переписки" width="637" height="101" loading="lazy" decoding="async"></picture><figcaption data-t="rev_adrenalin"></figcaption></figure><figure><div class="mchat" aria-hidden="true"><span class="av"></span><div><p>мне прям оч нравится что он настоящий, залипательно<i>❤️</i></p><p>я вот анализирую что мне нравится в контенте. нравится мне настоящесть и легкость<i>❤️</i></p></div></div><picture class="desk"><source srcset="img/reviews/rev-nastoyashchiy.webp" type="image/webp"><img src="img/reviews/rev-nastoyashchiy.png" alt="Відгук з переписки" width="637" height="129" loading="lazy" decoding="async"></picture><figcaption data-t="rev_nastoyashchiy"></figcaption></figure><figure><div class="mchat noava" aria-hidden="true"><span class="av"></span><div><p>Ходить в зал?)<br>Я всем говорю что это ты виноват)</p></div></div><picture class="desk"><source srcset="img/reviews/rev-zal.webp" type="image/webp"><img src="img/reviews/rev-zal.png" alt="Відгук з переписки" width="289" height="63" loading="lazy" decoding="async"></picture><figcaption data-t="rev_zal"></figcaption></figure><figure><div class="mchat" aria-hidden="true"><span class="av"></span><div><p>Толу джан, однознак соспортивкой твой материал залетает. До инфопродукта 3,2,1. Прям напрашивается где купить, куда подписаться. Топчик 🔥🔥🔥. Для Тик-ток тоже отличный контент. И это ты ещё в кадре харизмой не светил. С таким форматом, думаю, можно и не говорить в кадре вовсе) ТОП 🔥<i>❤️</i></p></div></div><picture class="desk"><source srcset="img/reviews/rev-infoprodukt.webp" type="image/webp"><img src="img/reviews/rev-infoprodukt.png" alt="Відгук з переписки" width="637" height="134" loading="lazy" decoding="async"></picture><figcaption data-t="rev_infoprodukt"></figcaption></figure><figure><div class="mchat" aria-hidden="true"><span class="av"></span><div><p>Обожаю эти влоги!<i>❤️</i></p></div></div><picture class="desk"><source srcset="img/reviews/rev-vlogy.webp" type="image/webp"><img src="img/reviews/rev-vlogy.png" alt="Відгук з переписки" width="210" height="50" loading="lazy" decoding="async"></picture><figcaption data-t="rev_vlogy"></figcaption></figure></div>
       </div>
     </div>
   </section>
@@ -459,7 +476,7 @@ const T = {
     nav_how:"Як це працює", nav_try:"Спробуй", nav_price:"Ціна",
     c_h:"Коло своїх.",
     c_safe:"Що там, лишається там. Тут не соромлять за слабкий день і не міряються успішним успіхом.",
-    rev_masha:"", rev_alt:"Відгук Маші Павлової в Telegram: робити хоча б трішки, але кожен день",
+    rev_smotryu:"", rev_adrenalin:"", rev_nastoyashchiy:"", rev_zal:"", rev_infoprodukt:"", rev_vlogy:"", rev_masha:"", rev_alt:"Відгук Маші Павлової в Telegram: робити хоча б трішки, але кожен день",
     c_items:[["Чат однодумців","Група з гілками: челенджі, загальне, компанія, ідеї."],
              ["Компанія","Створюєш свій челендж і кидаєш посилання друзям, до 5 людей. Щодня кожен підтверджує фото чи скріном, інші зараховують."]],
     p1:"+1% щодня", p2:"це ×37 за рік.",
@@ -523,6 +540,7 @@ const T = {
     nav_how:"How it works", nav_try:"Try it", nav_price:"Price",
     c_h:"Your people.",
     c_safe:"What's there stays there. Nobody shames you for a weak day here, and nobody competes in successful success.",
+    rev_smotryu:"“I watch all the time. Even though my life is very boring, I kind of want to do this too.”", rev_adrenalin:"“Yesterday I watched our battle at Adrenaline… you’re a whole different person there. Funny how the body changes with different loads and time. I support your activity! It motivates.”", rev_nastoyashchiy:"“I really like that he’s real, it’s addictive. What I like in content is realness and lightness.”", rev_zal:"“Going to the gym?) I tell everyone it’s your fault)”", rev_infoprodukt:"“Your sports material lands for sure. It just begs for a place to buy or subscribe. Top 🔥”", rev_vlogy:"“Love these vlogs!”",
     rev_masha:"Masha, in Ukrainian: Tolu's daily stories were a real example for me. In a personal chat I learned the secret: do at least a little, but every day. It really works, and I use this system too.",
     rev_alt:"Masha Pavlova's review in Telegram, in Ukrainian",
     c_items:[["Like-minded chat","A group with topics: challenges, general, company, ideas."],
@@ -706,7 +724,7 @@ function setLang(l) {
     : `<p${i === 2 ? ' class="key"' : ""}>${esc(p)}</p>`).join("");
   $("how-intro").innerHTML = L.how.map(([i,h,c,p])=>`<div class="perk"><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join("");
   $("inside").innerHTML = L.inside.map(([a, b, q]) => `<li${q ? ' class="essay"' : ""}><b>${esc(a)}</b><span>${esc(b)}</span>${q ? `<blockquote class="excerpt">${q.split("\n\n").map((x) => `<p>${esc(x)}</p>`).join("")}</blockquote>` : ""}</li>`).join("");
-  document.querySelectorAll("#shots img").forEach((im) => { im.alt = L.rev_alt; });
+  document.querySelectorAll("#shots > figure img").forEach((im) => { im.alt = L.rev_alt; });
   $("c-items").innerHTML = L.c_items.map(([a, b]) => `<li><b>${esc(a)}</b><span>${esc(b)}</span></li>`).join("");
   $("steps").innerHTML = L.steps.map(([a, b]) => `<li><h3>${esc(a)}</h3>${b ? `<p>${esc(b)}</p>` : ""}</li>`).join("");
   $("legend2").innerHTML = ["m", "n", "x", "f", "s"].map((k) => `<span><i style="background:${COL[k]}"></i>${esc(L.lg[k])}</span>`).join("");
