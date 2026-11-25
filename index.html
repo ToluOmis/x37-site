@@ -122,16 +122,14 @@ p,li{text-wrap:pretty}
 .txt p{font-size:clamp(18px,1.9vw,21px);line-height:1.55}
 .txt p:first-child{font:600 clamp(30px,3.6vw,42px)/1.08 var(--disp);letter-spacing:-.035em;margin-top:-.15em;text-wrap:balance}
 .txt p+p{margin-top:16px}
-.txt p.key{color:var(--acc)}
+.txt p.key{font:italic 500 clamp(19px,2vw,22px)/1.5 var(--disp);color:var(--ink);padding-left:16px;border-left:2px solid var(--acc);margin-top:26px}
 .wins{list-style:none;padding:0;margin:18px 0 0;counter-reset:w;border-top:1px solid var(--line)}
 .wins li{counter-increment:w;display:grid;grid-template-columns:2.4em minmax(0,1fr);gap:4px;padding:11px 0;border-bottom:1px solid var(--line);font-size:clamp(16px,1.6vw,18px);line-height:1.45}
 .wins li::before{content:counter(w,decimal-leading-zero);font:500 13px var(--mono);color:var(--acc);padding-top:4px}
 .wins+p{margin-top:24px!important}
-.goals{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 24px;color:var(--mute);font-size:16px}
-.goals li{display:grid;grid-template-columns:12px minmax(0,1fr);align-items:baseline}
-.goals li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--acc);transform:translateY(-3px)}
-@media(max-width:480px){.goals{grid-template-columns:minmax(0,1fr)}}
-.goals+p{margin-top:22px!important}
+.goals{list-style:none;padding:0 0 0 18px;margin:12px 0 0;display:grid;gap:4px;color:var(--ink);font-size:clamp(18px,1.9vw,21px);line-height:1.55}
+.goals li{display:grid;grid-template-columns:16px minmax(0,1fr);align-items:baseline}
+.goals li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--acc);transform:translateY(-.2em)}
 .end{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(28px,5vw,80px);align-items:center}
 .end .shot{aspect-ratio:auto;height:clamp(320px,36vw,460px)}
 .end .shot img{object-position:50% 30%}
@@ -208,8 +206,8 @@ p,li{text-wrap:pretty}
 @media(max-width:860px){.play{grid-template-columns:minmax(0,1fr)}}
 
 /* ціна */
-.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(14px,2vw,22px);margin-top:44px;align-items:stretch}
-.plan{display:grid!important;grid-row:span 7;grid-template-rows:subgrid;row-gap:0}
+.plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:860px;gap:0 clamp(14px,2vw,22px);margin-top:44px;align-items:stretch}
+.plan{display:grid!important;grid-row:span 8;grid-template-rows:subgrid;row-gap:0}
 .plan>*{align-self:start}
 .plan .btn{align-self:end}
 .plan{border-radius:10px;padding:clamp(22px,3vw,32px);border:1px solid var(--line);background:transparent}
@@ -225,10 +223,14 @@ p,li{text-wrap:pretty}
 .plan .timer:empty,.timer-slot{margin:0 0 22px}
 .plan p.note{margin-top:16px;color:var(--mute);font-size:15px}
 .plan p.note:empty{margin:0}
+.plan[hidden]{display:none!important}
+.plan .then{margin-top:6px;color:var(--mute)}
+.then-slot{display:block;height:calc(1.6em + 6px)}
+.cancel{margin-top:16px;color:var(--mute);font-size:15px}
 .timer{font:600 15px var(--mono);margin-top:10px}
 .plan.hot .timer:not(:empty){justify-self:start;width:max-content;color:var(--ink);font-size:17px;font-variant-numeric:tabular-nums;margin-bottom:22px}
 .fine{color:var(--mute);font-size:15px;margin-top:22px;max-width:70ch}
-@media(max-width:860px){.plans{grid-template-columns:minmax(0,1fr);row-gap:14px}.plan{grid-row:auto;grid-template-rows:none}.badge-slot,.timer-slot{display:none}}
+@media(max-width:860px){.plans{grid-template-columns:minmax(0,1fr);row-gap:14px}.plan{grid-row:auto;grid-template-rows:none}.badge-slot,.timer-slot,.then-slot{display:none}}
 
 /* FAQ */
 .faq{margin-top:36px;max-width:820px;border-top:1px solid var(--line)}
@@ -259,7 +261,7 @@ p,li{text-wrap:pretty}
     <li>Чат однодумців і статті Толу.</li>
   </ul>
   <h2>Ціна</h2>
-  <p>Місяць 547 грн, 6 місяців ≈ 413 грн на місяць. Без пробного періоду. Почати: <a href="https://t.me/x37game">@x37game</a>, оплата: <a href="https://t.me/x37pay_bot">@x37pay_bot</a>.</p>
+  <p>Перший місяць 100 грн, далі 547 грн на місяць. 6 місяців 2477 грн (413 грн на місяць). Підписку можна скасувати в будь-який момент у пару кліків. Почати: <a href="https://t.me/x37game">@x37game</a>, оплата: <a href="https://t.me/x37pay_bot">@x37pay_bot</a>.</p>
   <p>Daily Telegram challenges by Tolu: +1% a day is ×37 a year.</p>
 </noscript>
 
@@ -377,29 +379,33 @@ p,li{text-wrap:pretty}
           <h3 data-t="o_h"></h3>
           <div class="num">100<small data-t="uah">грн</small></div>
           <p class="per" data-t="o_per"></p>
+          <p class="then" data-t="o_then"></p>
           <p class="timer" id="timer"></p>
-          <a class="btn" href="https://t.me/x37game" data-t="cta">Почати</a>
+          <a class="btn" href="https://t.me/x37game" data-t="o_btn"></a>
           <p class="note" data-t="o_note"></p>
         </div>
-        <div class="plan">
+        <div class="plan" id="month" hidden>
           <span class="badge-slot"></span>
           <h3 data-t="m_h"></h3>
           <div class="num">547<small data-t="uah">грн</small></div>
           <p class="per" data-t="m_per"></p>
+          <span class="then-slot"></span>
           <span class="timer-slot"></span>
-          <a class="btn main" href="https://t.me/x37game" data-t="cta">Почати</a>
-          <p class="note" data-t="m_note"></p>
+          <a class="btn main" href="https://t.me/x37game" data-t="m_btn"></a>
+          <p class="note"></p>
         </div>
         <div class="plan">
           <span class="badge-slot"></span>
           <h3 data-t="h_h"></h3>
           <div class="num">2477<small data-t="uah">грн</small></div>
           <p class="per" data-t="h_per"></p>
+          <span class="then-slot"></span>
           <span class="timer-slot"></span>
-          <a class="btn main" href="https://t.me/x37game" data-t="cta">Почати</a>
-          <p class="note" data-t="h_note"></p>
+          <a class="btn main" href="https://t.me/x37game" data-t="h_btn"></a>
+          <p class="note"></p>
         </div>
       </div>
+      <p class="cancel" data-t="cancel"></p>
     </div>
   </section>
 
@@ -443,7 +449,7 @@ const T = {
   uk: {
     nav_how:"Як це працює", nav_try:"Спробуй", nav_price:"Ціна",
     c_h:"Коло своїх.",
-    c_safe:"Що там, лишається там. Тут не соромлять за слабкий день і не міряються успішним успіхом. Сьогодні тільки m? Це теж день, і за нього тут підтримають так само, як за M.",
+    c_safe:"Що там, лишається там. Тут не соромлять за слабкий день і не міряються успішним успіхом.",
     c_items:[["Чат однодумців","Група з гілками: челенджі, загальне, компанія, ідеї."],
              ["Компанія","Створюєш свій челендж і кидаєш посилання друзям, до 5 людей. Щодня кожен підтверджує фото чи скріном, інші зараховують."]],
     p1:"+1% щодня", p2:"це ×37 за рік.",
@@ -463,8 +469,7 @@ const T = {
          "4 роки поспіль щоденного фітнесу: без зривів і самобичування",
          "і найцінніше: покрокове покращення стосунків з донькою"],
         "Одна важлива деталь: ціль має бути твоєю. Не щоб догодити комусь і не для галочки, а те, що справді важливо тобі.",
-        {g:["вивчити мову","повернути форму без ненависті до себе","довести особистий проєкт","налагодити режим","проводити більше часу з близькими"]},
-        "Спорт лише точка входу, але обмежуватись ним не варто."],
+        {g:["вивчити мову","повернути форму без ненависті до себе","довести особистий проєкт","налагодити режим","проводити більше часу з близькими"]}],
     how_h:"Як це працює.",
     how:[["🏃","Вхід через спорт","без спорядження","На ньому формулу видно найшвидше. Челенджі поділені за рівнями, тож прогресувати може кожен. Без «через силу»."],
          ["🗓","Свій челендж","одразу","Можеш іти з моїми або завести свій: назвеш його, задаси свої m і 100%, і бот рахуватиме так само."],
@@ -486,10 +491,11 @@ const T = {
     sub:(c)=>[`${c.marked} з 30 днів з відміткою`, c.s?`пропусків: ${c.s}`:"", c.f?`заморозок: ${c.f}`:""].filter(Boolean).join(" · "),
     ch_min:"тільки m щодня", ch_day:"день",
     pr_h:"Ціна.",
-    o_badge:"Бонус для друзів", o_h:"Перший місяць · старт", o_per:"за перший місяць", o_note:"Лише 47 годин після запуску. Чому 47? Бо 4 і 7 мої улюблені цифри",
+    o_badge:"Бонус для друзів", o_h:"Місяць", o_per:"за перший місяць", o_then:"далі 547 грн на місяць", o_btn:"Спробувати за 100 грн", o_note:"Для перших 47 учасників. Чому 47? Бо 4 і 7 мої улюблені цифри",
     o_wait:"47 годин після запуску", o_left:(h,m,s)=>`${h}:${m}:${s}`,
-    m_h:"Місяць", m_per:"на місяць", m_note:"",
-    h_h:"6 місяців", h_per:"≈ 413 грн на місяць", h_note:"",
+    m_h:"Місяць", m_per:"на місяць", m_btn:"Обрати місяць",
+    h_h:"6 місяців", h_per:"413 грн на місяць", h_btn:"Обрати 6 місяців",
+    cancel:"Підписку можна скасувати в будь-який момент у пару кліків.",
     uah:"грн",
     fine:"Пробного періоду немає: я за «голосування» монетою. Оплата через платіжного бота @x37pay_bot (monobank). Скасувати можна будь-коли, доступ лишиться до кінця оплаченого.",
     faq:[
@@ -505,7 +511,7 @@ const T = {
   en: {
     nav_how:"How it works", nav_try:"Try it", nav_price:"Price",
     c_h:"Your people.",
-    c_safe:"What's there stays there. Nobody shames you for a weak day here, and nobody competes in successful success. Only an m today? That's a day too, and you'll get the same support for it as for an M.",
+    c_safe:"What's there stays there. Nobody shames you for a weak day here, and nobody competes in successful success.",
     c_items:[["Like-minded chat","A group with topics: challenges, general, company, ideas."],
              ["Company","Create your own challenge and send the link to friends, up to 5 people. Every day everyone proves it with a photo or screenshot, the others accept it."]],
     p1:"+1% a day", p2:"is ×37 a year.",
@@ -525,8 +531,7 @@ const T = {
          "4 years in a row of daily fitness: no relapses, no self-flagellation",
          "and the most valuable part: a step-by-step improvement in my relationship with my daughter"],
         "One important detail: the goal has to be yours. Not to please someone and not to tick a box, but something that truly matters to you.",
-        {g:["learn a language","get back in shape without hating yourself","finish a personal project","sort out your daily routine","spend more time with the people you love"]},
-        "Sport is just the way in, but it's not worth stopping there."],
+        {g:["learn a language","get back in shape without hating yourself","finish a personal project","sort out your daily routine","spend more time with the people you love"]}],
     how_h:"How it works.",
     how:[["🏃","Sport is the way in","no equipment","That's where the formula shows fastest. Challenges are split by level, so everyone can progress. No forcing yourself."],
          ["🗓","Your own challenge","right away","Go with mine or set up your own: name it, set your m and 100%, and the bot counts it the same way."],
@@ -548,10 +553,11 @@ const T = {
     sub:(c)=>[`${c.marked} of 30 days checked in`, c.s?`skips: ${c.s}`:"", c.f?`freezes: ${c.f}`:""].filter(Boolean).join(" · "),
     ch_min:"only m every day", ch_day:"day",
     pr_h:"Price.",
-    o_badge:"Bonus for friends", o_h:"First month · launch", o_per:"for the first month", o_note:"Only for 47 hours after launch. Why 47? Because 4 and 7 are my favourite numbers",
+    o_badge:"Bonus for friends", o_h:"Month", o_per:"for the first month", o_then:"then 547 UAH a month", o_btn:"Try it for 100 UAH", o_note:"For the first 47 members. Why 47? Because 4 and 7 are my favourite numbers",
     o_wait:"47 hours after launch", o_left:(h,m,s)=>`${h}:${m}:${s}`,
-    m_h:"Month", m_per:"a month", m_note:"",
-    h_h:"6 months", h_per:"≈ 413 UAH a month", h_note:"",
+    m_h:"Month", m_per:"a month", m_btn:"Choose a month",
+    h_h:"6 months", h_per:"413 UAH a month", h_btn:"Choose 6 months",
+    cancel:"You can cancel your subscription at any time in a couple of clicks.",
     uah:"UAH",
     fine:"There's no trial: I believe in voting with your wallet. Payment goes through the payment bot @x37pay_bot (monobank). Cancel any time, access stays until the end of the paid period.",
     faq:[
@@ -649,7 +655,7 @@ function tickOffer() {
   const el = $("timer");
   if (!OFFER_START) { el.textContent = ""; return; }
   const end = new Date(OFFER_START).getTime() + 47 * 3600e3, now = Date.now();
-  if (now >= end) { $("offer").remove(); clearInterval(offerTimer); return; }
+  if (now >= end) { $("offer").remove(); $("month").hidden = false; clearInterval(offerTimer); return; }
   if (now < new Date(OFFER_START).getTime()) { el.textContent = T[lang].o_wait; return; }
   const left = Math.floor((end - now) / 1000), p = (n) => String(n).padStart(2, "0");
   el.textContent = T[lang].o_left(p(Math.floor(left / 3600)), p(Math.floor(left / 60) % 60), p(left % 60));
