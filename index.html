@@ -32,7 +32,7 @@
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebSite", "name": "×37", "alternateName": "×37 · математика результату", "url": "https://toluomis.shop/", "inLanguage": ["uk", "en"]}, {"@context": "https://schema.org", "@type": "Person", "name": "Tolu Omis", "alternateName": "Толу", "url": "https://toluomis.shop/", "sameAs": ["https://instagram.com/tolu.omis"]}, {"@context": "https://schema.org", "@type": "Product", "name": "×37: щоденні челенджі", "description": "Щоденні челенджі в Telegram за m100M і формулою Бернуллі: +1% щодня це ×37 за рік. Рівні m, 100 і M, свій челендж, Компанія з друзями, чат однодумців. Від Толу.", "brand": {"@type": "Brand", "name": "×37"}, "image": "https://toluomis.shop/img/og.jpg", "offers": {"@type": "Offer", "price": "547", "priceCurrency": "UAH", "url": "https://t.me/x37pay_bot", "availability": "https://schema.org/InStock"}}, {"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "uk", "mainEntity": [{"@type": "Question", "name": "Я пропустив день. Усе пропало?", "acceptedAnswer": {"@type": "Answer", "text": "Ні. Пропуск це просто ×1 (нуль, без штрафів). Раз на тиждень є заморозка, яка не рве серію. А якщо кілька днів тебе не видно, бот просто спитає, як ти."}}, {"@type": "Question", "name": "Що потрібно, крім телефона?", "acceptedAnswer": {"@type": "Answer", "text": "Нічого."}}, {"@type": "Question", "name": "Скільки часу це займає?", "acceptedAnswer": {"@type": "Answer", "text": "Від хвилини на m до стільки, скільки хочеш на M. Сама відмітка в боті це одне натискання."}}, {"@type": "Question", "name": "Можна свій челендж, не про спорт?", "acceptedAnswer": {"@type": "Answer", "text": "Так, одразу: називаєш його, задаєш свої m і 100%, і бот рахує так само. Читання, англійська, без цукру. Що завгодно, що важливо тобі."}}, {"@type": "Question", "name": "Як скасувати підписку?", "acceptedAnswer": {"@type": "Answer", "text": "У платіжному боті @x37pay_bot → «Моя підписка». Доступ лишиться до кінця оплаченого періоду, а твій прогрес у боті @x37game збережеться."}}]}]</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=JetBrains+Mono:wght@400;500;600&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ×37 · світла тепла система (етап 1 редизайну).
    Папір #F6F2EA, графіт #1C1A17, один акцент — приглушена теракота #C86A3B (кнопки й ключові цифри).
@@ -127,6 +127,9 @@ p,li{text-wrap:pretty}
 .wins li{counter-increment:w;display:grid;grid-template-columns:2.4em minmax(0,1fr);gap:4px;padding:11px 0;border-bottom:1px solid var(--line);font-size:clamp(16px,1.6vw,18px);line-height:1.45}
 .wins li::before{content:counter(w,decimal-leading-zero);font:500 13px var(--mono);color:var(--acc);padding-top:4px}
 .wins+p{margin-top:24px!important}
+.goals{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-wrap:wrap;gap:6px 22px;color:var(--mute);font-size:16px}
+.goals li::before{content:"·";color:var(--acc);margin-right:8px}
+.goals+p{margin-top:22px!important}
 .end{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(28px,5vw,80px);align-items:center}
 .end .shot{aspect-ratio:auto;height:clamp(320px,36vw,460px)}
 .end .shot img{object-position:50% 30%}
@@ -153,11 +156,15 @@ p,li{text-wrap:pretty}
 .inside li{padding:18px 0;border-bottom:1px solid var(--line)}
 .inside b{display:block;font-family:var(--disp);font-weight:600;font-size:20px;letter-spacing:-.02em}
 .inside span{color:var(--mute);font-size:16px}
-.steps{list-style:none;padding:0;margin:72px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(18px,3vw,32px);counter-reset:s}
+.inside li.essay{grid-column:1/-1}
+.excerpt{margin:18px 0 4px;padding:2px 0 2px 22px;border-left:2px solid var(--acc);max-width:62ch}
+.excerpt p{font:italic 500 clamp(17px,1.7vw,19px)/1.6 var(--disp);color:var(--ink)}
+.excerpt p+p{margin-top:12px}
+.steps{list-style:none;padding:0;margin:72px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,3vw,32px);counter-reset:s}
 .steps li{counter-increment:s;border-top:1px solid var(--ink);padding-top:16px}
 .steps li::before{content:counter(s,decimal-leading-zero);display:block;font:500 14px var(--mono);color:var(--acc)}
 .steps h3{margin-top:10px;font-size:20px}.steps p{color:var(--mute);margin-top:8px;font-size:16px}
-@media(max-width:860px){.inside{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:860px){.inside{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:700px){.how-intro,.levels{grid-template-columns:minmax(0,1fr)}.formula{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:480px){.steps{grid-template-columns:minmax(0,1fr)}}
 
@@ -420,6 +427,7 @@ const T = {
          "4 роки поспіль щоденного фітнесу: без зривів і самобичування",
          "і найцінніше: покрокове покращення стосунків з донькою"],
         "Одна важлива деталь: ціль має бути твоєю. Не щоб догодити комусь і не для галочки, а те, що справді важливо тобі.",
+        {g:["вивчити мову","повернути форму без ненависті до себе","довести особистий проєкт","налагодити режим","проводити більше часу з близькими"]},
         "Спорт лише точка входу, але обмежуватись ним не варто."],
     how_h:"Як це працює.",
     how:[["🏃","Вхід через спорт","без спорядження","На ньому формулу видно найшвидше. Челенджі поділені за рівнями, тож прогресувати може кожен. Без «через силу»."],
@@ -432,12 +440,10 @@ const T = {
     f_p:"За формулою Бернуллі дні не додаються, а перемножуються: ×1,01 × 1,02 × 1,005 × … Тому маленька m щодня сильніша за героїчний ривок раз на місяць.",
     inside:[["Щоденні челенджі","Від мене, під твою стать і рівень. І свої, одразу."],
             ["Чат однодумців","Група з гілками: челенджі, загальне, компанія, ідеї. Що там, лишається там."],
-            ["Міні-есе","Мої думки й нутро: про дисципліну без насильства, гроші, стосунки, AI та інше."],
-            ["Компанія","Свій челендж удвох або до 5 людей: умова, строк, щоденне підтвердження, турнірна таблиця."]],
-    steps:[["Відкрий бота","@x37game і слідуй інструкціям."],
-           ["Оформи підписку","Платіжний бот одразу додасть тебе в групу для спілкування."],
-           ["Повертайся в бот","Тисни /start і слідуй інструкціям. Челендж підбереться під твій рівень."],
-           ["Готово!","Одна кнопка на день у зручний для тебе час. Тиснеш свій рівень, бот рахує твою математику результату."]],
+            ["Міні-есе","Мої думки й нутро: про дисципліну без насильства, гроші, стосунки, AI та інше.","Класик психології Альберт Бандура придумав термін «тріадична реципрокна причинність». Перекладаю: ти формуєш середовище, а середовище формує тебе. Більшість із нас бере в цьому процесі участь переважно як сировина.\n\nАмериканський генерал Чарльз Крулак, морська піхота, помітив дивну річ. Коли новобранцям давали наказ без детальної інструкції, вони не панікували. Вони самі вигадували рішення і раптом починали по-справжньому старатися.\n\nТобто навіть там, де свобода це вибір між «так, сер» і «сер, так, сер», людині потрібне відчуття, що кермо в її руках."]],
+    steps:[["Обираєш свою ціль або мій челендж"],
+           ["Раз на день тиснеш одну кнопку (m, 100 чи M)"],
+           ["Бачиш ріст і рухаємось разом"]],
     pl_h:"Спробуй: збери свій місяць.",
     pl_lede:"Обери сценарій або тисни на дні, щоб змінити рівень: пропуск → m → 100 → M → заморозка.",
     p_norm:"Щодня на 100", p_storm:"Буремне життя", p_min:"Тільки мінімум",
@@ -480,6 +486,7 @@ const T = {
          "4 years in a row of daily fitness: no relapses, no self-flagellation",
          "and the most valuable part: a step-by-step improvement in my relationship with my daughter"],
         "One important detail: the goal has to be yours. Not to please someone and not to tick a box, but something that truly matters to you.",
+        {g:["learn a language","get back in shape without hating yourself","finish a personal project","sort out your daily routine","spend more time with the people you love"]},
         "Sport is just the way in, but it's not worth stopping there."],
     how_h:"How it works.",
     how:[["🏃","Sport is the way in","no equipment","That's where the formula shows fastest. Challenges are split by level, so everyone can progress. No forcing yourself."],
@@ -492,12 +499,10 @@ const T = {
     f_p:"By Bernoulli's formula, days don't add up, they multiply: ×1.01 × 1.02 × 1.005 × … That's why a small m every day beats a heroic sprint once a month.",
     inside:[["Daily challenges","From me, for your gender and level. And your own, right away."],
             ["Like-minded chat","A group with topics: challenges, general, company, ideas. What's there stays there."],
-            ["Mini-essays","My thoughts and guts: on discipline without forcing yourself, money, relationships, AI and more. In Ukrainian."],
-            ["Company","Your own challenge for two or up to 5 people: a condition, a length, a daily proof, a leaderboard."]],
-    steps:[["Open the bot","@x37game and follow the instructions."],
-           ["Subscribe","The payment bot adds you to the community group right away."],
-           ["Back to the bot","Tap /start and follow the instructions. The challenge adapts to your level."],
-           ["Done!","One tap a day at a time that suits you. Tap your level, the bot counts your math of results."]],
+            ["Mini-essays","My honest thoughts: on discipline without forcing yourself, money, relationships, AI and more. In Ukrainian."]],
+    steps:[["Pick your own goal or my challenge"],
+           ["Once a day, tap one button (m, 100 or M)"],
+           ["See the growth, and we keep moving together"]],
     pl_h:"Try it: build your month.",
     pl_lede:"Pick a scenario or tap the days to change the level: skip → m → 100 → M → freeze.",
     p_norm:"100 every day", p_storm:"Stormy life", p_min:"Only the minimum",
@@ -627,10 +632,11 @@ function setLang(l) {
   $("spheres").innerHTML = L.sph.map(([k, n]) => `<button type="button" data-s="${k}" aria-pressed="${k === sphere}">${esc(n)}</button>`).join("");
   $("me-txt").innerHTML = L.me.map((p, i) => Array.isArray(p)
     ? `<p>${esc(p[0])}</p><ol class="wins">${p.slice(1).map((x) => `<li>${esc(x)}</li>`).join("")}</ol>`
+    : p.g ? `<ul class="goals">${p.g.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>`
     : `<p${i === 2 ? ' class="key"' : ""}>${esc(p)}</p>`).join("");
   $("how-intro").innerHTML = L.how.map(([i,h,c,p])=>`<div class="perk"><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join("");
-  $("inside").innerHTML = L.inside.map(([a, b]) => `<li><b>${esc(a)}</b><span>${esc(b)}</span></li>`).join("");
-  $("steps").innerHTML = L.steps.map(([a, b]) => `<li><h3>${esc(a)}</h3><p>${esc(b)}</p></li>`).join("");
+  $("inside").innerHTML = L.inside.map(([a, b, q]) => `<li${q ? ' class="essay"' : ""}><b>${esc(a)}</b><span>${esc(b)}</span>${q ? `<blockquote class="excerpt">${q.split("\n\n").map((x) => `<p>${esc(x)}</p>`).join("")}</blockquote>` : ""}</li>`).join("");
+  $("steps").innerHTML = L.steps.map(([a, b]) => `<li><h3>${esc(a)}</h3>${b ? `<p>${esc(b)}</p>` : ""}</li>`).join("");
   $("legend2").innerHTML = ["m", "n", "x", "f", "s"].map((k) => `<span><i style="background:${COL[k]}"></i>${esc(L.lg[k])}</span>`).join("");
   $("faq-list").innerHTML = L.faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("");
   renderMonth(); demoPaint(); if ($("timer")) tickOffer();
