@@ -177,9 +177,11 @@ p,li{text-wrap:pretty}
 .c-items li{padding:18px 0;border-bottom:1px solid var(--line)}
 .c-items b{display:block;font:600 20px var(--disp);letter-spacing:-.02em}
 .c-items span{color:var(--mute);font-size:16px}
-.shots{columns:3 260px;column-gap:16px;margin-top:48px}
-.shots figure{margin:0 0 16px;break-inside:avoid;border-radius:8px;overflow:hidden;background:var(--bg)}
-.shots img{display:block;width:100%;height:auto}
+.shots{columns:3 260px;column-gap:20px;margin-top:48px}
+.shots figure{margin:0 0 20px;break-inside:avoid;max-width:420px}
+.shots img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid #DDD5C7;background:#121820}
+.shots figcaption{margin-top:10px;color:var(--mute);font-size:14px;line-height:1.5}
+.shots figcaption:empty{display:none}
 @media(max-width:860px){.c-layout{grid-template-columns:minmax(0,1fr)}}
 
 /* місяць-тренажер: темний острів */
@@ -342,9 +344,11 @@ p,li{text-wrap:pretty}
         <ul class="c-items" id="c-items"></ul>
       </div>
       <!-- Сітка під реальні скріншоти переписок (поки прихована, щоб не було порожнечі).
-           Щоб увімкнути: прибери атрибут hidden і додай картинки, напр.:
+           Нові скріни додавай сюди ж окремими <figure>, напр.:
            <figure><img src="img/chats/01.webp" alt="Переписка в чаті ×37" loading="lazy"></figure> -->
-      <div class="shots" id="shots" hidden></div>
+      <div class="shots" id="shots">
+        <figure><picture><source srcset="img/reviews/masha.webp" type="image/webp"><img src="img/reviews/masha.png" alt="Відгук Маші Павлової в Telegram: робити хоча б трішки, але кожен день" width="640" height="755" loading="lazy" decoding="async"></picture><figcaption data-t="rev_masha"></figcaption></figure>
+      </div>
     </div>
   </section>
 
@@ -453,6 +457,7 @@ const T = {
     nav_how:"Як це працює", nav_try:"Спробуй", nav_price:"Ціна",
     c_h:"Коло своїх.",
     c_safe:"Що там, лишається там. Тут не соромлять за слабкий день і не міряються успішним успіхом.",
+    rev_masha:"", rev_alt:"Відгук Маші Павлової в Telegram: робити хоча б трішки, але кожен день",
     c_items:[["Чат однодумців","Група з гілками: челенджі, загальне, компанія, ідеї."],
              ["Компанія","Створюєш свій челендж і кидаєш посилання друзям, до 5 людей. Щодня кожен підтверджує фото чи скріном, інші зараховують."]],
     p1:"+1% щодня", p2:"це ×37 за рік.",
@@ -516,6 +521,8 @@ const T = {
     nav_how:"How it works", nav_try:"Try it", nav_price:"Price",
     c_h:"Your people.",
     c_safe:"What's there stays there. Nobody shames you for a weak day here, and nobody competes in successful success.",
+    rev_masha:"Masha, in Ukrainian: Tolu's daily stories were a real example for me. In a personal chat I learned the secret: do at least a little, but every day. It really works, and I use this system too.",
+    rev_alt:"Masha Pavlova's review in Telegram, in Ukrainian",
     c_items:[["Like-minded chat","A group with topics: challenges, general, company, ideas."],
              ["Company","Create your own challenge and send the link to friends, up to 5 people. Every day everyone proves it with a photo or screenshot, the others accept it."]],
     p1:"+1% a day", p2:"is ×37 a year.",
@@ -697,6 +704,7 @@ function setLang(l) {
     : `<p${i === 2 ? ' class="key"' : ""}>${esc(p)}</p>`).join("");
   $("how-intro").innerHTML = L.how.map(([i,h,c,p])=>`<div class="perk"><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join("");
   $("inside").innerHTML = L.inside.map(([a, b, q]) => `<li${q ? ' class="essay"' : ""}><b>${esc(a)}</b><span>${esc(b)}</span>${q ? `<blockquote class="excerpt">${q.split("\n\n").map((x) => `<p>${esc(x)}</p>`).join("")}</blockquote>` : ""}</li>`).join("");
+  document.querySelectorAll("#shots img").forEach((im) => { im.alt = L.rev_alt; });
   $("c-items").innerHTML = L.c_items.map(([a, b]) => `<li><b>${esc(a)}</b><span>${esc(b)}</span></li>`).join("");
   $("steps").innerHTML = L.steps.map(([a, b]) => `<li><h3>${esc(a)}</h3>${b ? `<p>${esc(b)}</p>` : ""}</li>`).join("");
   $("legend2").innerHTML = ["m", "n", "x", "f", "s"].map((k) => `<span><i style="background:${COL[k]}"></i>${esc(L.lg[k])}</span>`).join("");
