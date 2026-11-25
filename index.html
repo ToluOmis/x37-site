@@ -127,8 +127,10 @@ p,li{text-wrap:pretty}
 .wins li{counter-increment:w;display:grid;grid-template-columns:2.4em minmax(0,1fr);gap:4px;padding:11px 0;border-bottom:1px solid var(--line);font-size:clamp(16px,1.6vw,18px);line-height:1.45}
 .wins li::before{content:counter(w,decimal-leading-zero);font:500 13px var(--mono);color:var(--acc);padding-top:4px}
 .wins+p{margin-top:24px!important}
-.goals{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-wrap:wrap;gap:6px 22px;color:var(--mute);font-size:16px}
-.goals li::before{content:"·";color:var(--acc);margin-right:8px}
+.goals{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 24px;color:var(--mute);font-size:16px}
+.goals li{display:grid;grid-template-columns:12px minmax(0,1fr);align-items:baseline}
+.goals li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--acc);transform:translateY(-3px)}
+@media(max-width:480px){.goals{grid-template-columns:minmax(0,1fr)}}
 .goals+p{margin-top:22px!important}
 .end{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(28px,5vw,80px);align-items:center}
 .end .shot{aspect-ratio:auto;height:clamp(320px,36vw,460px)}
@@ -136,7 +138,7 @@ p,li{text-wrap:pretty}
 @media(max-width:860px){.me,.end{grid-template-columns:minmax(0,1fr)}.end .shot{order:-1;height:auto;aspect-ratio:4/5;max-height:80vh}.end .shot img{object-position:50% 0}.me .shot{max-height:80vh}}
 
 /* як це працює: асиметрична сітка, лінії замість карток */
-.how-intro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,4fr);gap:0 clamp(32px,6vw,96px);margin-top:44px;border-top:1px solid var(--line)}
+.how-intro{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(32px,6vw,96px);margin-top:44px;border-top:1px solid var(--line)}
 .perk{padding:24px 0 26px;border-bottom:1px solid var(--line)}
 .perk:nth-child(even){padding-left:0}
 .perk .pi,.perk .chip{display:none}
@@ -152,11 +154,11 @@ p,li{text-wrap:pretty}
 .formula{margin-top:72px;padding:36px 0;border-block:1px solid var(--line);display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px clamp(28px,5vw,72px);align-items:center}
 .formula .num{font-size:clamp(30px,4.4vw,52px);color:var(--acc)}
 .formula p{color:var(--mute);max-width:56ch}
-.inside{list-style:none;padding:0;margin:72px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(24px,5vw,72px)}
+.inside{list-style:none;padding:0;margin:72px 0 0;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:0 clamp(24px,5vw,72px)}
 .inside li{padding:18px 0;border-bottom:1px solid var(--line)}
 .inside b{display:block;font-family:var(--disp);font-weight:600;font-size:20px;letter-spacing:-.02em}
 .inside span{color:var(--mute);font-size:16px}
-.inside li.essay{grid-column:1/-1}
+.inside li.essay{grid-column:auto}
 .excerpt{margin:18px 0 4px;padding:2px 0 2px 22px;border-left:2px solid var(--acc);max-width:62ch}
 .excerpt p{font:italic 500 clamp(17px,1.7vw,19px)/1.6 var(--disp);color:var(--ink)}
 .excerpt p+p{margin-top:12px}
@@ -165,8 +167,22 @@ p,li{text-wrap:pretty}
 .steps li::before{content:counter(s,decimal-leading-zero);display:block;font:500 14px var(--mono);color:var(--acc)}
 .steps h3{margin-top:10px;font-size:20px}.steps p{color:var(--mute);margin-top:8px;font-size:16px}
 @media(max-width:860px){.inside{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:860px){.how-intro{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:700px){.how-intro,.levels{grid-template-columns:minmax(0,1fr)}.formula{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:480px){.steps{grid-template-columns:minmax(0,1fr)}}
+
+/* ком'юніті */
+.community{background:var(--bg2)}
+.c-layout{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(28px,5vw,80px);margin-top:36px;align-items:start}
+.c-safe{font:500 clamp(20px,2vw,24px)/1.5 var(--disp);letter-spacing:-.01em;max-width:34ch;text-wrap:pretty}
+.c-items{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
+.c-items li{padding:18px 0;border-bottom:1px solid var(--line)}
+.c-items b{display:block;font:600 20px var(--disp);letter-spacing:-.02em}
+.c-items span{color:var(--mute);font-size:16px}
+.shots{columns:3 260px;column-gap:16px;margin-top:48px}
+.shots figure{margin:0 0 16px;break-inside:avoid;border-radius:8px;overflow:hidden;background:var(--bg)}
+.shots img{display:block;width:100%;height:auto}
+@media(max-width:860px){.c-layout{grid-template-columns:minmax(0,1fr)}}
 
 /* місяць-тренажер: темний острів */
 .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px}
@@ -181,6 +197,7 @@ p,li{text-wrap:pretty}
 .cell[data-l=m]{background:var(--m);font-size:clamp(10px,1.1vw,12px)}.cell[data-l=n]{background:var(--n)}.cell[data-l=x]{background:var(--x);color:#fff;font-size:clamp(13px,1.6vw,16px)}
 .cell[data-l=f]{background:#16303f;color:var(--f)}.cell[data-l=s]{color:#8a857c}
 .legend2{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px;font-size:13px;color:#cfc9bd}
+.legend-note{margin-top:10px;font-size:13px;line-height:1.5;color:#cfc9bd;max-width:44ch}
 .legend2 i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
 .board{position:relative;border-radius:8px;background:#14130f;border:1px solid #2c2925;padding:clamp(18px,2.6vw,28px);display:flex;flex-direction:column;min-height:420px}
 .board .num{font-size:clamp(52px,7.4vw,88px);line-height:.95;color:#f2f2ee}
@@ -313,6 +330,20 @@ p,li{text-wrap:pretty}
     </div>
   </section>
 
+  <section class="band community" id="community">
+    <div class="wrap">
+      <h2 data-t="c_h"></h2>
+      <div class="c-layout">
+        <p class="c-safe" data-t="c_safe"></p>
+        <ul class="c-items" id="c-items"></ul>
+      </div>
+      <!-- Сітка під реальні скріншоти переписок (поки прихована, щоб не було порожнечі).
+           Щоб увімкнути: прибери атрибут hidden і додай картинки, напр.:
+           <figure><img src="img/chats/01.webp" alt="Переписка в чаті ×37" loading="lazy"></figure> -->
+      <div class="shots" id="shots" hidden></div>
+    </div>
+  </section>
+
   <section class="band" id="month">
     <div class="wrap">
       <h2 data-t="pl_h"></h2>
@@ -326,6 +357,7 @@ p,li{text-wrap:pretty}
         <div>
           <div class="grid30" id="g30" aria-label="30 днів"></div>
           <div class="legend2" id="legend2"></div>
+          <p class="legend-note" data-t="lg_note"></p>
         </div>
         <div class="board" aria-live="polite">
           <div class="num grad" id="r-num">×1,00</div>
@@ -410,6 +442,10 @@ const OFFER_START = "";
 const T = {
   uk: {
     nav_how:"Як це працює", nav_try:"Спробуй", nav_price:"Ціна",
+    c_h:"Коло своїх.",
+    c_safe:"Що там, лишається там. Тут не соромлять за слабкий день і не міряються успішним успіхом. Сьогодні тільки m? Це теж день, і за нього тут підтримають так само, як за M.",
+    c_items:[["Чат однодумців","Група з гілками: челенджі, загальне, компанія, ідеї."],
+             ["Компанія","Створюєш свій челендж і кидаєш посилання друзям, до 5 людей. Щодня кожен підтверджує фото чи скріном, інші зараховують."]],
     p1:"+1% щодня", p2:"це ×37 за рік.",
     lede:"Якщо тобі казали, що складна математика в житті не знадобиться, тобі брехали. m100M і формула Бернуллі складаються в прогрес, який не зупинити.",
     hero_sub:"Спокійна система в Telegram і коло своїх людей, щоб дійти до твоїх справжніх цілей без вигорання. Одне натискання на день.",
@@ -432,14 +468,12 @@ const T = {
     how_h:"Як це працює.",
     how:[["🏃","Вхід через спорт","без спорядження","На ньому формулу видно найшвидше. Челенджі поділені за рівнями, тож прогресувати може кожен. Без «через силу»."],
          ["🗓","Свій челендж","одразу","Можеш іти з моїми або завести свій: назвеш його, задаси свої m і 100%, і бот рахуватиме так само."],
-         ["📲","Картка дня","1 натискання","Бот надсилає її у твій час. Рахує серію, математику результату й щодня відкриває шматочок секретної картинки челенджу."],
-         ["🤝","Компанія","до 5 друзів","Створюєш свій челендж і кидаєш посилання друзям. Щодня кожен підтверджує фото чи скріном, інші зараховують."]],
+         ["📲","Картка дня","1 натискання","Бот надсилає її у твій час. Рахує серію, математику результату й щодня відкриває шматочок секретної картинки челенджу."]],
     lv_m:"Мінімум", lv_m_p:"Те, що ти можеш зробити в будь-якому стані, навіть якщо випив чи застудився.",
     lv_n:"База", lv_n_p:"Твій звичайний добрий день. Те, що ти робиш, коли все йде нормально.",
     lv_x:"Більше за базу", lv_x_p:"На натхненні. Не плануєш, просто ловиш, коли прийде.",
     f_p:"За формулою Бернуллі дні не додаються, а перемножуються: ×1,01 × 1,02 × 1,005 × … Тому маленька m щодня сильніша за героїчний ривок раз на місяць.",
     inside:[["Щоденні челенджі","Від мене, під твою стать і рівень. І свої, одразу."],
-            ["Чат однодумців","Група з гілками: челенджі, загальне, компанія, ідеї. Що там, лишається там."],
             ["Міні-есе","Мої думки й нутро: про дисципліну без насильства, гроші, стосунки, AI та інше.","Класик психології Альберт Бандура придумав термін «тріадична реципрокна причинність». Перекладаю: ти формуєш середовище, а середовище формує тебе. Більшість із нас бере в цьому процесі участь переважно як сировина.\n\nАмериканський генерал Чарльз Крулак, морська піхота, помітив дивну річ. Коли новобранцям давали наказ без детальної інструкції, вони не панікували. Вони самі вигадували рішення і раптом починали по-справжньому старатися.\n\nТобто навіть там, де свобода це вибір між «так, сер» і «сер, так, сер», людині потрібне відчуття, що кермо в її руках."]],
     steps:[["Обираєш свою ціль або мій челендж"],
            ["Раз на день тиснеш одну кнопку (m, 100 чи M)"],
@@ -447,6 +481,7 @@ const T = {
     pl_h:"Спробуй: збери свій місяць.",
     pl_lede:"Обери сценарій або тисни на дні, щоб змінити рівень: пропуск → m → 100 → M → заморозка.",
     p_norm:"Щодня на 100", p_storm:"Буремне життя", p_min:"Тільки мінімум",
+    lg_note:"Заморозка ×1 береже серію днів. Пропуск ×1 скидає серію, але загальний множник не падає.",
     lg:{m:"m +0,5%",n:"100 +1%",x:"M +2%",f:"❄︎ заморозка ×1",s:"пропуск ×1"},
     sub:(c)=>[`${c.marked} з 30 днів з відміткою`, c.s?`пропусків: ${c.s}`:"", c.f?`заморозок: ${c.f}`:""].filter(Boolean).join(" · "),
     ch_min:"тільки m щодня", ch_day:"день",
@@ -469,6 +504,10 @@ const T = {
   },
   en: {
     nav_how:"How it works", nav_try:"Try it", nav_price:"Price",
+    c_h:"Your people.",
+    c_safe:"What's there stays there. Nobody shames you for a weak day here, and nobody competes in successful success. Only an m today? That's a day too, and you'll get the same support for it as for an M.",
+    c_items:[["Like-minded chat","A group with topics: challenges, general, company, ideas."],
+             ["Company","Create your own challenge and send the link to friends, up to 5 people. Every day everyone proves it with a photo or screenshot, the others accept it."]],
     p1:"+1% a day", p2:"is ×37 a year.",
     lede:"If they told you hard math would never be useful in life, they lied. m100M and Bernoulli's formula add up to progress that can't be stopped.",
     hero_sub:"A calm system in Telegram and a circle of your people, to reach your real goals without burning out. One tap a day.",
@@ -491,14 +530,12 @@ const T = {
     how_h:"How it works.",
     how:[["🏃","Sport is the way in","no equipment","That's where the formula shows fastest. Challenges are split by level, so everyone can progress. No forcing yourself."],
          ["🗓","Your own challenge","right away","Go with mine or set up your own: name it, set your m and 100%, and the bot counts it the same way."],
-         ["📲","Day card","1 tap","The bot sends it at your time. It counts your streak and your math of results, and every day reveals a piece of the challenge's secret picture."],
-         ["🤝","Company","up to 5 friends","Create your own challenge and send the link to friends. Every day everyone proves it with a photo or screenshot, the others accept it."]],
+         ["📲","Day card","1 tap","The bot sends it at your time. It counts your streak and your math of results, and every day reveals a piece of the challenge's secret picture."]],
     lv_m:"Minimum", lv_m_p:"What you can do in any state, even if you had a drink or caught a cold.",
     lv_n:"Base", lv_n_p:"Your normal good day. What you do when things are going fine.",
     lv_x:"More than the base", lv_x_p:"When you're inspired. You don't plan it, you catch it when it comes.",
     f_p:"By Bernoulli's formula, days don't add up, they multiply: ×1.01 × 1.02 × 1.005 × … That's why a small m every day beats a heroic sprint once a month.",
     inside:[["Daily challenges","From me, for your gender and level. And your own, right away."],
-            ["Like-minded chat","A group with topics: challenges, general, company, ideas. What's there stays there."],
             ["Mini-essays","My honest thoughts: on discipline without forcing yourself, money, relationships, AI and more. In Ukrainian."]],
     steps:[["Pick your own goal or my challenge"],
            ["Once a day, tap one button (m, 100 or M)"],
@@ -506,6 +543,7 @@ const T = {
     pl_h:"Try it: build your month.",
     pl_lede:"Pick a scenario or tap the days to change the level: skip → m → 100 → M → freeze.",
     p_norm:"100 every day", p_storm:"Stormy life", p_min:"Only the minimum",
+    lg_note:"A freeze ×1 keeps your streak. A skip ×1 resets the streak, but your overall multiplier doesn't drop.",
     lg:{m:"m +0.5%",n:"100 +1%",x:"M +2%",f:"❄︎ freeze ×1",s:"skip ×1"},
     sub:(c)=>[`${c.marked} of 30 days checked in`, c.s?`skips: ${c.s}`:"", c.f?`freezes: ${c.f}`:""].filter(Boolean).join(" · "),
     ch_min:"only m every day", ch_day:"day",
@@ -540,10 +578,10 @@ const RATE = { s: 0, m: 0.005, n: 0.01, x: 0.02, f: 0 }, ORDER = ["s", "m", "n",
 const COL = { m: "#f7c948", n: "#3fb950", x: "#3b82f6", f: "#8fd3ff", s: "#4a4a42" };
 const PRESETS = {
   norm: "n".repeat(30),
-  storm: "nnmnsnnxmnfnmsnnxnmmnsnfnnxnmn",
+  storm: "nmsnfmnxsmnnsmfnmxnsmnnfmsnxmn",
   min: "m".repeat(30)
 };
-let preset = "norm", days = PRESETS.norm.split("");
+let preset = "storm", days = PRESETS.storm.split("");
 function short(l) { return l === "s" ? "" : l === "f" ? "❄︎" : l === "m" ? T[lang].k_m1 : l === "n" ? "100" : T[lang].k_x1; }
 function renderMonth() {
   $("g30").innerHTML = days.map((l, i) => `<button type="button" class="cell" data-i="${i}" data-l="${l}" aria-label="${T[lang].ch_day} ${i + 1}: ${T[lang].lg[l]}">${short(l) || i + 1}</button>`).join("");
@@ -636,6 +674,7 @@ function setLang(l) {
     : `<p${i === 2 ? ' class="key"' : ""}>${esc(p)}</p>`).join("");
   $("how-intro").innerHTML = L.how.map(([i,h,c,p])=>`<div class="perk"><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join("");
   $("inside").innerHTML = L.inside.map(([a, b, q]) => `<li${q ? ' class="essay"' : ""}><b>${esc(a)}</b><span>${esc(b)}</span>${q ? `<blockquote class="excerpt">${q.split("\n\n").map((x) => `<p>${esc(x)}</p>`).join("")}</blockquote>` : ""}</li>`).join("");
+  $("c-items").innerHTML = L.c_items.map(([a, b]) => `<li><b>${esc(a)}</b><span>${esc(b)}</span></li>`).join("");
   $("steps").innerHTML = L.steps.map(([a, b]) => `<li><h3>${esc(a)}</h3>${b ? `<p>${esc(b)}</p>` : ""}</li>`).join("");
   $("legend2").innerHTML = ["m", "n", "x", "f", "s"].map((k) => `<span><i style="background:${COL[k]}"></i>${esc(L.lg[k])}</span>`).join("");
   $("faq-list").innerHTML = L.faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("");
