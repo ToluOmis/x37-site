@@ -242,9 +242,11 @@ p,li{text-wrap:pretty}
 .faq p{color:var(--mute);padding:0 0 22px;max-width:62ch}
 
 .foot{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--mute);font-size:14px}
-.foot .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
+.foot .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center}
 .foot nav{display:flex;flex-wrap:wrap;gap:8px 22px}
-.foot a{text-decoration:none;transition:color .15s}.foot a:hover{color:var(--ink)}
+.foot a{text-decoration:none;transition:color .15s,background-color .15s}.foot a:hover{color:var(--ink)}
+.foot nav{align-items:center}
+.foot a.donate{background:#F2CF6B;color:var(--ink);font-weight:600;padding:5px 12px;border-radius:6px}.foot a.donate:hover{background:#E9BD45}
 
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.poster span{opacity:1;transform:none}html{scroll-behavior:auto}}
 </style>
@@ -384,7 +386,7 @@ p,li{text-wrap:pretty}
           <a class="btn" href="https://t.me/x37game" data-t="o_btn"></a>
           <p class="note" data-t="o_note"></p>
         </div>
-        <div class="plan" id="month" hidden>
+        <div class="plan" id="plan-month" hidden>
           <span class="badge-slot"></span>
           <h3 data-t="m_h"></h3>
           <div class="num">547<small data-t="uah">грн</small></div>
@@ -421,8 +423,7 @@ p,li{text-wrap:pretty}
       <div>
         <h2 data-t="e_h"></h2>
         <div class="ctas">
-          <a class="btn main" href="https://t.me/x37game" data-t="cta">Почати</a>
-          <a class="btn ghost" href="https://send.monobank.ua/jar/ee17e4b4M" data-t="donate"></a>
+          <a class="btn main" href="https://t.me/x37game" data-t="cta">Спробувати за 100 грн</a>
         </div>
       </div>
       <figure class="shot"><picture><source srcset="img/tolu-daughter.webp" type="image/webp"><img src="img/tolu-daughter.jpg" alt="Толу з донькою на пляжі" width="1300" height="1624" loading="lazy" decoding="async"></picture></figure>
@@ -434,16 +435,18 @@ p,li{text-wrap:pretty}
   <div class="wrap">
     <span>×37 · <span data-t="f1">математика результату</span></span>
     <span data-t="made">створено Tolu Omis</span>
-    <nav><a href="https://t.me/toluomis">Telegram</a><a href="https://www.instagram.com/tolu.omis">Instagram</a></nav>
+    <nav><a href="https://t.me/toluomis">Telegram</a><a href="https://www.instagram.com/tolu.omis">Instagram</a><a class="donate" href="https://send.monobank.ua/jar/ee17e4b4M" data-t="donate">Підтримати проєкт ×37</a></nav>
   </div>
 </footer>
 
 <script>
 {
-/* Пропозиція «перший місяць за 100 грн» діє 47 годин від запуску.
-   Встав час старту (ISO, напр. "2026-12-01T19:00:00+02:00") — з'явиться таймер, а після 47 годин картка сховається.
-   Порожньо — картка показує «47 годин після запуску» без таймера. */
-const OFFER_START = "";
+/* Стартова ціна (перший місяць за 100 грн) діє 47 годин.
+   ЄДИНЕ місце для дедлайну: встав час КІНЦЯ акції (ISO з поясом, напр. "2026-12-03T19:00:00+02:00").
+   З нього беруться і дата в тексті картки, і таймер. Старт = кінець мінус 47 годин.
+   Порожньо: таймера немає, у тексті «47 годин від запуску».
+   Коли дедлайн минув: картка 100 грн ховається, з'являється звичайний «Місяць 547 грн», кнопки стають «Перейти в бот». */
+const OFFER_END = "";
 
 const T = {
   uk: {
@@ -457,7 +460,7 @@ const T = {
     hero_sub:"Спокійна система в Telegram і коло своїх людей, щоб дійти до твоїх справжніх цілей без вигорання. Одне натискання на день.",
     cta_try:"Спробувати місяць за 100 грн",
     sph:[["sport","Спорт","1 км","5 км"],["money","Фінанси","записати витрати дня","відкласти 100 грн"],["own","Створити свій","твій мінімум","твоя база"]],
-    cta:"Почати", k_f:"❄️ заморозка", k_s:"пропуск", k_m1:"m", k_x1:"M", pc_m:"+0,5%", f_n:"1,01³⁶⁵ ≈ 37,78",
+    cta:"Спробувати за 100 грн", cta_bot:"Перейти в бот", k_f:"❄️ заморозка", k_s:"пропуск", k_m1:"m", k_x1:"M", pc_m:"+0,5%", f_n:"1,01³⁶⁵ ≈ 37,78",
     tick:"постійність створює події, які інші називають удачею",
     demo:{day:(d)=>`День ${d} з 30`, lv:"m: 2 км · 100: 5 км", st:(n)=>`серія ${n} ${n%10===1&&n%100!==11?"день":(n%10>=2&&n%10<=4&&(n%100<12||n%100>14))?"дні":"днів"}`, mx:(x)=>`математика результату ${x}`, ok:(l)=>`✅ Відмічено: ${l}`, lab:{m:"🟨 m",n:"🟩 100",x:"🟦 M"}},
     me:["Привіт, я Толу. Не тренер, не вчитель, не знавець, не мотиватор.",
@@ -491,8 +494,9 @@ const T = {
     sub:(c)=>[`${c.marked} з 30 днів з відміткою`, c.s?`пропусків: ${c.s}`:"", c.f?`заморозок: ${c.f}`:""].filter(Boolean).join(" · "),
     ch_min:"тільки m щодня", ch_day:"день",
     pr_h:"Ціна.",
-    o_badge:"Бонус для друзів", o_h:"Місяць", o_per:"за перший місяць", o_then:"далі 547 грн на місяць", o_btn:"Спробувати за 100 грн", o_note:"Для перших 47 учасників. Чому 47? Бо 4 і 7 мої улюблені цифри",
-    o_wait:"47 годин після запуску", o_left:(h,m,s)=>`${h}:${m}:${s}`,
+    o_badge:"Бонус для друзів", o_h:"Місяць", o_per:"за перший місяць", o_then:"далі 547 грн на місяць", o_btn:"Спробувати за 100 грн", o_note:(d)=>`Стартова ціна діє 47 годин${d ? `, до ${d}` : " від запуску"}. Чому 47? Бо 4 і 7 мої улюблені цифри`,
+    o_date:{loc:"uk-UA", tz:"за Києвом"},
+    o_left:(h,m,s)=>`${h}:${m}:${s}`,
     m_h:"Місяць", m_per:"на місяць", m_btn:"Обрати місяць",
     h_h:"6 місяців", h_per:"413 грн на місяць", h_btn:"Обрати 6 місяців",
     cancel:"Підписку можна скасувати в будь-який момент у пару кліків.",
@@ -519,7 +523,7 @@ const T = {
     hero_sub:"A calm system in Telegram and a circle of your people, to reach your real goals without burning out. One tap a day.",
     cta_try:"Try a month for 100 UAH",
     sph:[["sport","Sport","1 km","5 km"],["money","Finance","log today's spending","save 100 UAH"],["own","Create your own","your minimum","your base"]],
-    cta:"Start", k_f:"❄️ freeze", k_s:"skip", k_m1:"m", k_x1:"M", pc_m:"+0.5%", f_n:"1.01³⁶⁵ ≈ 37.78",
+    cta:"Try for 100 UAH", cta_bot:"Open the bot", k_f:"❄️ freeze", k_s:"skip", k_m1:"m", k_x1:"M", pc_m:"+0.5%", f_n:"1.01³⁶⁵ ≈ 37.78",
     tick:"consistency creates events that others call luck",
     demo:{day:(d)=>`Day ${d} of 30`, lv:"m: 2 km · 100: 5 km", st:(n)=>`streak ${n} day${n===1?"":"s"}`, mx:(x)=>`math of results ${x}`, ok:(l)=>`✅ Checked in: ${l}`, lab:{m:"🟨 m",n:"🟩 100",x:"🟦 M"}},
     me:["Hi, I'm Tolu. Not a trainer, not a teacher, not an expert, not a motivator.",
@@ -553,8 +557,9 @@ const T = {
     sub:(c)=>[`${c.marked} of 30 days checked in`, c.s?`skips: ${c.s}`:"", c.f?`freezes: ${c.f}`:""].filter(Boolean).join(" · "),
     ch_min:"only m every day", ch_day:"day",
     pr_h:"Price.",
-    o_badge:"Bonus for friends", o_h:"Month", o_per:"for the first month", o_then:"then 547 UAH a month", o_btn:"Try it for 100 UAH", o_note:"For the first 47 members. Why 47? Because 4 and 7 are my favourite numbers",
-    o_wait:"47 hours after launch", o_left:(h,m,s)=>`${h}:${m}:${s}`,
+    o_badge:"Bonus for friends", o_h:"Month", o_per:"for the first month", o_then:"then 547 UAH a month", o_btn:"Try it for 100 UAH", o_note:(d)=>`The launch price is live for 47 hours${d ? `, until ${d}` : " from launch"}. Why 47? Because 4 and 7 are my favorite numbers`,
+    o_date:{loc:"en-GB", tz:"Kyiv time"},
+    o_left:(h,m,s)=>`${h}:${m}:${s}`,
     m_h:"Month", m_per:"a month", m_btn:"Choose a month",
     h_h:"6 months", h_per:"413 UAH a month", h_btn:"Choose 6 months",
     cancel:"You can cancel your subscription at any time in a couple of clicks.",
@@ -651,12 +656,18 @@ function demoStep() {
 }
 
 /* ---------- пропозиція 47 годин ---------- */
+function offerDate(l) {
+  if (!OFFER_END) return "";
+  const o = T[l].o_date, d = new Date(OFFER_END), z = { timeZone: "Europe/Kyiv" };
+  return `${d.toLocaleDateString(o.loc, { ...z, day: "numeric", month: "long" })}, ${d.toLocaleTimeString(o.loc, { ...z, hour: "2-digit", minute: "2-digit", hour12: false })} ${o.tz}`;
+}
+const offerOver = () => !!OFFER_END && Date.now() >= new Date(OFFER_END).getTime();
 function tickOffer() {
   const el = $("timer");
-  if (!OFFER_START) { el.textContent = ""; return; }
-  const end = new Date(OFFER_START).getTime() + 47 * 3600e3, now = Date.now();
-  if (now >= end) { $("offer").remove(); $("month").hidden = false; clearInterval(offerTimer); return; }
-  if (now < new Date(OFFER_START).getTime()) { el.textContent = T[lang].o_wait; return; }
+  if (!OFFER_END) { el.textContent = ""; return; }
+  const end = new Date(OFFER_END).getTime(), start = end - 47 * 3600e3, now = Date.now();
+  if (now >= end) { clearInterval(offerTimer); setLang(lang); return; }
+  if (now < start) { el.textContent = ""; return; }
   const left = Math.floor((end - now) / 1000), p = (n) => String(n).padStart(2, "0");
   el.textContent = T[lang].o_left(p(Math.floor(left / 3600)), p(Math.floor(left / 60) % 60), p(left % 60));
 }
@@ -670,6 +681,12 @@ function setLang(l) {
   document.title = l === "uk" ? "×37: щоденні челенджі за формулою +1% від Толу" : "×37: daily challenges on the +1% formula by Tolu";
   document.querySelector('meta[name="description"]').content = l === "uk" ? "Щоденні челенджі в Telegram за m100M і формулою Бернуллі: +1% щодня це ×37 за рік. Рівні m, 100 і M, свій челендж, Компанія з друзями, чат однодумців. Від Толу." : "Daily Telegram challenges built on m100M and Bernoulli's formula: +1% a day is ×37 a year. Levels m, 100 and M, your own challenge, Company with friends, a like-minded chat. By Tolu.";
   document.querySelectorAll("[data-t]").forEach((el) => { const v = L[el.dataset.t]; if (typeof v === "string") el.textContent = v; });
+  document.querySelectorAll('[data-t="o_note"]').forEach((el) => { el.textContent = L.o_note(offerDate(l)); });
+  if (offerOver()) {
+    if ($("offer")) $("offer").remove();
+    $("plan-month").hidden = false;
+    document.querySelectorAll('[data-t="cta"],[data-t="cta_try"]').forEach((el) => { el.textContent = L.cta_bot; });
+  }
   document.querySelectorAll(".lang button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.lang === l));
   document.querySelector(".poster").setAttribute("aria-label", L.p1 + " " + L.p2);
   document.querySelectorAll("#demo-kb [data-k]").forEach((k) => { k.textContent = L.demo.lab[k.dataset.k]; });
